@@ -45,19 +45,25 @@ export const Circle = styled.div<CircleProps>`
 export const Button = styled.button`
   width: 200px;
   height: 36px;
-  font-size: 24px;
+
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   right: 24px;
   bottom: 24px;
+
   background-color: #29bfb8;
   color: white;
+  font-size: 20px;
+
   cursor: pointer;
   border: none;
+  border-radius: 4px;
+
+  transition-duration: 0.3s;
 
   &:hover {
-    background-color: #114a4d;
+    background-color: #22a09a;
   }
 `;

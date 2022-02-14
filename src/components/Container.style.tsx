@@ -7,12 +7,13 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   position: relative;
 
   overflow: hidden;
-
-  background-blend-mode: ${({ blendMode }) => blendMode};
-  mix-blend-mode: ${({ blendMode }) => blendMode};
 
   & > * {
     background-blend-mode: ${({ blendMode }) => blendMode};

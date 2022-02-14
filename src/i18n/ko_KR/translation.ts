@@ -1,6 +1,5 @@
 const text = {
-  header: '이제 프로젝트를 시작할 수 있습니다.',
-  info: ['project setted by', '@sshrik/bp'],
+  header: '아무곳이나 클릭하고 움직여보세요!',
 };
 
 export default text;

@@ -6,6 +6,7 @@ import React, {
   useState,
 } from 'react';
 import { nanoid } from 'nanoid';
+import { useTranslation } from 'react-i18next';
 import * as S from 'components/Container.style';
 
 interface CircleState {
@@ -137,6 +138,8 @@ const MainPage: React.FC = () => {
     [circleStates]
   );
 
+  const { t } = useTranslation();
+
   return (
     <S.Container
       blendMode={blendMode[blendIndex]}
@@ -144,7 +147,7 @@ const MainPage: React.FC = () => {
       onMouseDown={mouseDownHandler}
       onMouseUp={mouseUpHandler}
     >
-      <S.Header>Click and drag everywhere</S.Header>
+      <S.Header>{t('header')}</S.Header>
       {circles}
       {clickCircle.isClicked && (
         <S.Circle x={cx} y={cy} r={clickCircle.r} color={clickCircle.color} />

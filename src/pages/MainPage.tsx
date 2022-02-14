@@ -55,9 +55,15 @@ const MainPage: React.FC = () => {
     mouseDownHandler,
     mouseMoveHandler,
     mouseUpHandler,
+    touchDownHandler,
+    touchMoveHandler,
+    touchUpHandler,
   } = useDragAndDropDraw({
     beforeMouseUp: (e) => {
       addCircle(e.clientX, e.clientY, r, color);
+    },
+    beforeTouchUp: (e) => {
+      addCircle(e.touches[0].clientX, e.touches[0].clientY, r, color);
     },
   });
 
@@ -75,6 +81,9 @@ const MainPage: React.FC = () => {
       onMouseMove={mouseMoveHandler}
       onMouseDown={mouseDownHandler}
       onMouseUp={mouseUpHandler}
+      onTouchMove={touchMoveHandler}
+      onTouchStart={touchUpHandler}
+      onTouchEnd={touchDownHandler}
     >
       <S.Header>{t('header')}</S.Header>
       {circles}

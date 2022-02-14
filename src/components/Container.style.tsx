@@ -21,7 +21,7 @@ export const Container = styled.div<ContainerProps>`
   }
 `;
 
-export const Header = styled.h1`
+export const Header = styled.h4`
   color: black;
 `;
 

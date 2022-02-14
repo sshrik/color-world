@@ -34,7 +34,7 @@ const MainPage: React.FC = () => {
   const [circleStates, setCircleStates] = useState<CircleState[]>([]);
   const [blendIndex, setBlendIndex] = useState(0);
 
-  const genCircle = (x: number, y: number, r: number, color: string) => {
+  const addCircle = (x: number, y: number, r: number, color: string) => {
     setCircleStates([
       ...circleStates,
       {
@@ -55,8 +55,10 @@ const MainPage: React.FC = () => {
     mouseDownHandler,
     mouseMoveHandler,
     mouseUpHandler,
-  } = useDragAndDropDraw((e) => {
-    genCircle(e.clientX, e.clientY, r, color);
+  } = useDragAndDropDraw({
+    beforeMouseUp: (e) => {
+      addCircle(e.clientX, e.clientY, r, color);
+    },
   });
 
   const circles = useMemo(

@@ -7,7 +7,13 @@ interface ClickState {
   color: string;
 }
 
-const useDragAndDropDraw = (onMouseUp: MouseEventHandler) => {
+interface useDragAndDropDrawParameter {
+  beforeMouseUp?: MouseEventHandler;
+  beforeMouseDown?: MouseEventHandler;
+}
+
+const useDragAndDropDraw = (params: useDragAndDropDrawParameter) => {
+  const { beforeMouseUp, beforeMouseDown } = params;
   const [cx, setX] = useState(-100);
   const [cy, setY] = useState(-100);
   const [clickCircle, setClickCircle] = useState<ClickState>({
@@ -53,6 +59,8 @@ const useDragAndDropDraw = (onMouseUp: MouseEventHandler) => {
   }, [clickCircle.isClicked]);
 
   const mouseDownHandler: MouseEventHandler = (e) => {
+    if (beforeMouseDown !== undefined) beforeMouseDown(e);
+
     const r = getRadius(true);
     setClickCircle({
       isClicked: true,
@@ -72,7 +80,8 @@ const useDragAndDropDraw = (onMouseUp: MouseEventHandler) => {
   };
 
   const mouseUpHandler: MouseEventHandler = (e) => {
-    onMouseUp(e);
+    if (beforeMouseUp !== undefined) beforeMouseUp(e);
+
     setClickCircle({
       isClicked: false,
       clickStartTime: 0,
